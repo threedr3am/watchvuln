@@ -5,10 +5,11 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/imroc/req/v3"
-	"github.com/kataras/golog"
 	"strings"
 	"time"
+
+	"github.com/imroc/req/v3"
+	"github.com/kataras/golog"
 )
 
 type OSCSCrawler struct {
@@ -130,16 +131,17 @@ func (t *OSCSCrawler) ParsePage(ctx context.Context, page, size int) (chan *Vuln
 }
 
 func (t *OSCSCrawler) IsValuable(info *VulnInfo) bool {
-	// 仅有预警的 或高危严重的
-	if info.Severity != Critical && info.Severity != High {
-		return false
-	}
-	for _, tag := range info.Tags {
-		if tag == "发布预警" {
-			return true
-		}
-	}
-	return false
+	return info.Severity == Medium || info.Severity == Critical || info.Severity == High
+	// // 仅有预警的 或高危严重的
+	// if info.Severity != Critical && info.Severity != High {
+	// 	return false
+	// }
+	// for _, tag := range info.Tags {
+	// 	if tag == "发布预警" {
+	// 		return true
+	// 	}
+	// }
+	// return false
 }
 
 func (t *OSCSCrawler) parseSingeVuln(ctx context.Context, mps string) (*VulnInfo, error) {

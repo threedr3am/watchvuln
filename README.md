@@ -8,9 +8,9 @@
 
 | 名称            | 地址                                    | 推送策略                                             |
 |---------------|---------------------------------------|--------------------------------------------------|
-| 阿里云漏洞库        | https://avd.aliyun.com/high-risk/list | 等级为高危或严重                                         |
-| OSCS开源安全情报预警  | https://www.oscs1024.com/cm           | 等级为高危或严重**并且**包含 `预警` 标签                         |
-| 奇安信安全监测平台     | https://nox.qianxin.com/KeyPoint      | 等级为高危严重**并且**包含 `奇安信CERT验证` `POC公开` `技术细节公布`标签之一 |
+| 阿里云漏洞库       | https://avd.aliyun.com/high-risk/list | 等级为高危或严重或中危                                       |
+| OSCS开源安全情报预警 | https://www.oscs1024.com/cm           | 等级为高危或严重或中危                    |
+| 奇安信威胁情报中心    | https://ti.qianxin.com/vulnerability  | 等级为高危或严重或中危  |
 | 知道创宇Seebug漏洞库 | https://www.seebug.org/               | 存在 WAF，默认不启用，若手动启用，则推送等级为高危或严重                   |
 
 > 所有信息来自网站公开页面, 如果有侵权，请提交 issue, 我会删除相关源。

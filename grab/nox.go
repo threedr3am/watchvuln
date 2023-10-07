@@ -5,9 +5,10 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"strings"
+
 	"github.com/imroc/req/v3"
 	"github.com/kataras/golog"
-	"strings"
 )
 
 type NoxCrawler struct {
@@ -143,18 +144,19 @@ func (t *NoxCrawler) ParsePage(ctx context.Context, page, size int) (chan *VulnI
 }
 
 func (t *NoxCrawler) IsValuable(info *VulnInfo) bool {
-	if info.Severity != High && info.Severity != Critical {
-		return false
-	}
-	for _, tag := range info.Tags {
-		if tag == "奇安信CERT验证" ||
-			tag == "POC公开" ||
-			tag == "EXP公开" ||
-			tag == "技术细节公布" {
-			return true
-		}
-	}
-	return false
+	return info.Severity == Medium || info.Severity == Critical || info.Severity == High
+	// if info.Severity != High && info.Severity != Critical {
+	// 	return false
+	// }
+	// for _, tag := range info.Tags {
+	// 	if tag == "奇安信CERT验证" ||
+	// 		tag == "POC公开" ||
+	// 		tag == "EXP公开" ||
+	// 		tag == "技术细节公布" {
+	// 		return true
+	// 	}
+	// }
+	// return false
 }
 
 func (t *NoxCrawler) buildBody(page, size int) []byte {

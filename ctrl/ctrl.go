@@ -3,8 +3,14 @@ package ctrl
 import (
 	"context"
 	"database/sql"
-	entSql "entgo.io/ent/dialect/sql"
 	"fmt"
+	"net/http"
+	"regexp"
+	"strings"
+	"sync"
+	"time"
+
+	entSql "entgo.io/ent/dialect/sql"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/google/go-github/v53/github"
 	"github.com/jackc/pgx/v5/stdlib"
@@ -18,11 +24,6 @@ import (
 	"github.com/zema1/watchvuln/push"
 	"golang.org/x/sync/errgroup"
 	"modernc.org/sqlite"
-	"net/http"
-	"regexp"
-	"strings"
-	"sync"
-	"time"
 )
 
 func init() {
@@ -170,12 +171,13 @@ func (w *WatchVulnApp) Run(ctx context.Context) error {
 		case <-ctx.Done():
 			return ctx.Err()
 		case <-ticker.C:
-			hour := time.Now().Hour()
-			if hour >= 0 && hour < 7 {
-				// we must sleep in this time
-				w.log.Infof("sleeping..")
-				continue
-			}
+			// 必须24小时内卷
+			// hour := time.Now().Hour()
+			// if hour >= 0 && hour < 7 {
+			// 	// we must sleep in this time
+			// 	w.log.Infof("sleeping..")
+			// 	continue
+			// }
 
 			vulns, err := w.collectUpdate(ctx)
 			if err != nil {

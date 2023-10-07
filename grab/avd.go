@@ -5,15 +5,16 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"github.com/PuerkitoBio/goquery"
-	"github.com/imroc/req/v3"
-	"github.com/kataras/golog"
-	"golang.org/x/net/html"
 	"net/url"
 	"regexp"
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/PuerkitoBio/goquery"
+	"github.com/imroc/req/v3"
+	"github.com/kataras/golog"
+	"golang.org/x/net/html"
 )
 
 var (
@@ -129,7 +130,7 @@ func (a *AVDCrawler) ParsePage(ctx context.Context, page, _ int) (chan *VulnInfo
 }
 
 func (a *AVDCrawler) IsValuable(info *VulnInfo) bool {
-	return info.Severity == High || info.Severity == Critical
+	return info.Severity == High || info.Severity == Critical || info.Severity == Medium
 }
 
 func (a *AVDCrawler) parseSingle(ctx context.Context, vulnLink string) (*VulnInfo, error) {
