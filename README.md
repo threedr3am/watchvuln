@@ -64,13 +64,13 @@ docker run --restart always -d \
   -e DINGDING_SECRET=xxxx \
   -e INTERVAL=30m \
   -e ENABLE_CVE_FILTER=true \
-  zemal/watchvuln:latest
+  yulige/watchvuln:latest
 ```
 
 每次更新记得重新拉镜像:
 
 ```
-docker pull zemal/watchvuln:latest
+docker pull yulige/watchvuln:latest
 ```
 
 <details><summary>使用飞书机器人</summary>
@@ -80,7 +80,7 @@ docker run --restart always -d \
   -e LARK_ACCESS_TOKEN=xxxx \
   -e LARK_SECRET=xxxx \
   -e INTERVAL=30m \
-  zemal/watchvuln:latest
+  yulige/watchvuln:latest
 ```
 
 </details>
@@ -91,7 +91,7 @@ docker run --restart always -d \
 docker run --restart always -d \
   -e WECHATWORK_KEY=xxxx \
   -e INTERVAL=30m \
-  zemal/watchvuln:latest
+  yulige/watchvuln:latest
 ```
 
 </details>
@@ -102,7 +102,7 @@ docker run --restart always -d \
 docker run --restart always -d \
   -e BARK_URL=http://xxxx \
   -e INTERVAL=30m \
-  zemal/watchvuln:latest
+  yulige/watchvuln:latest
 ```
 
 </details>
@@ -115,7 +115,7 @@ docker run --restart always -d \
 docker run --restart always -d \
   -e WEBHOOK_URL=http://xxx \
   -e INTERVAL=30m \
-  zemal/watchvuln:latest
+  yulige/watchvuln:latest
 ```
 
 </details>
@@ -126,7 +126,7 @@ docker run --restart always -d \
 docker run --restart always -d \
   -e SERVERCHAN_KEY=xxxx \
   -e INTERVAL=30m \
-  zemal/watchvuln:latest
+  yulige/watchvuln:latest
 ```
 
 </details>
@@ -141,7 +141,7 @@ docker run --restart always -d \
   -e DINGDING_SECRET=xxxx \
   -e WECHATWORK_KEY=xxxx \
   -e INTERVAL=30m \
-  zemal/watchvuln:latest
+  yulige/watchvuln:latest
 ```
 
 </details>
